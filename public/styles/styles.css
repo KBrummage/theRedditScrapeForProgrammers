@@ -1,0 +1,139 @@
+.list-group-item {
+    line-height: 2.5;
+}
+
+/* *{
+      border: 1px red solid;
+  }  */
+
+* {
+    font-family: 'Vollkorn SC', serif;
+}
+
+h2 {
+    text-align: center;
+}
+
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 300vh;
+    margin: 0;
+}
+
+.chalkboard {
+    background: rgba(246, 246, 246, .2);
+
+}
+
+.card {
+    display: flex;
+    margin: 4% auto;
+    padding: 0 0 2% 0;
+    width: 60%;
+
+
+}
+
+.card-header {
+    font-family: 'Cormorant Unicase', serif;
+    text-align: right;
+}
+
+.card-text {
+    font-family: 'Alice', serif;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.card-footer {
+    display: hidden !important;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    margin: 0;
+    align-self: center;
+}
+
+.horizContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 0;
+    align-self: center;
+}
+
+.subCategories {
+    display: flex;
+    margin: 0;
+    align-self: center;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    align-self: flex-start
+}
+
+.entries{
+    display: flex;
+    align-self: right;
+    flex-wrap: wrap;
+    flex-grow: 2
+}
+
+.horiz {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.fixed {
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+}
+
+.headline {
+    color: white;
+    z-index: 3;
+}
+
+/* h1{
+    background-image: url("/public/assets/software4.jpg")
+  } */
+
+#questionOne,
+#rndmPrmptFld,
+#storyText {
+    font-family: 'Alice', serif;
+}
+
+.module {
+    display: flex;
+    color: red;
+    /* flex-grow: 1; */
+    width: 100vw;
+    min-height: 80vh;
+    /* background-color: black; */
+    background-image: url("../assets/software4.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    align-self: center;
+
+}
+
+.far.fa-heart,
+.fas {
+    color: red;
+
+}
+
+
+/* font-family: 'Cormorant Unicase', serif;
+  font-family: 'Vollkorn SC', serif;
+  font-family: 'Alice', serif; */

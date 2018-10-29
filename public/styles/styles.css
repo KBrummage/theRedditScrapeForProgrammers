@@ -29,10 +29,10 @@ h2 {
 
 .card {
     display: flex;
-    margin: 4% auto;
+    margin: auto;
     padding: 0 0 2% 0;
     width: 60%;
-
+    margin-top: 2%;
 
 }
 
@@ -115,7 +115,7 @@ h2 {
     color: red;
     /* flex-grow: 1; */
     width: 100vw;
-    min-height: 80vh;
+    min-height: 40vh;
     /* background-color: black; */
     background-image: url("../assets/software4.jpg");
     background-attachment: fixed;

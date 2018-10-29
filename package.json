@@ -20,10 +20,13 @@
   "homepage": "https://github.com/KBrummage/theRedditScrapeForProgrammers#readme",
   "dependencies": {
     "axios": "^0.18.0",
+    "bcrypt": "^3.0.2",
     "cheerio": "^1.0.0-rc.2",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.6",
     "mongojs": "^2.6.0",
-    "mongoose": "^5.3.4"
+    "mongoose": "^5.3.7",
+    "morgan": "^1.9.1"
   }
 }

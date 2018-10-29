@@ -1,53 +1,53 @@
-
 <div class="chalkboard">
   <h2>CS Scraper</h2>
   <hr>
- 
-<div class = "horizContainer">
+
+  <div class="horizContainer">
 
 
-<div class = "subCategories fixed">
-<ul>
-    
-    <li>CompSci</li>
-    <li>ComputerScience</li>
-    <li>CSCareerQuestions</li>
-    <li>JavaScript</li>
-    <li>JavaScriptHelp</li>
-    <li>LearnJavaScript</li>
-    <li>Node</li>
-    <li>React.JS</li>
-    <li>WebDev</li>
-    <li>Frontend</li>
-    <li>CSS</li>
-    <li>Coding</li>
-    <li>WebHosting</li>
-    <li>OpenSource</li>
-    <li>LearnWebDev</li>
-    <li>BadCode</li>
-    <li>PHP</li>
-    <li>Python</li>
-    <li>jQuery</li>
-    <li>Angular2</li>
-    <li>ReactJS</li>
-    <li>WordPress</li>
-    <li>Sass</li>
-    <li>DailyProgrammer</li>
-    <li>LearnProgramming</li>
-    <li>web_programming</li>
-    <li>AskComputerScience</li>
-    <li>ProgrammerHumor</li>
-    <li>Browsers</li>
-    <li>WebGL</li>
-    <li>HTML5</li>
-    <li>HTML5Games</li>
-    <li>Servers</li>
-    <li>DevOps</li>
-</ul>
-</div>
-<div class = "entries">
-  {{#each entries}} {{> entries/story-block}} {{/each}}
-</div>
+    <div class="subCategories">
+      <ul>
+
+        <li>CompSci</li>
+        <li>ComputerScience</li>
+        <li>CSCareerQuestions</li>
+        <li>JavaScript</li>
+        <li>JavaScriptHelp</li>
+        <li>LearnJavaScript</li>
+        <li>Node</li>
+        <li>React.JS</li>
+        <li>WebDev</li>
+        <li>Frontend</li>
+        <li>CSS</li>
+        <li>Coding</li>
+        <li>WebHosting</li>
+        <li>OpenSource</li>
+        <li>LearnWebDev</li>
+        <li>BadCode</li>
+        <li>PHP</li>
+        <li>Python</li>
+        <li>jQuery</li>
+        <li>Angular2</li>
+        <li>ReactJS</li>
+        <li>WordPress</li>
+        <li>Sass</li>
+        <li>DailyProgrammer</li>
+        <li>LearnProgramming</li>
+        <li>web_programming</li>
+        <li>AskComputerScience</li>
+        <li>ProgrammerHumor</li>
+        <li>Browsers</li>
+        <li>WebGL</li>
+        <li>HTML5</li>
+        <li>HTML5Games</li>
+        <li>Servers</li>
+        <li>DevOps</li>
+      </ul>
+    </div>
+
+    <div class="entries">
+      {{#each entries}} {{> entries/story-block}} {{/each}}
+    </div>
   </div>
 
 </div>
@@ -85,7 +85,7 @@
                     <div class="form-group">
                       <select class="form-control form-control-lg" id="questionOne">
                         <option id="bannerOption" selected>Choose a word contribution limit</option>
-                        
+
                       </select>
                     </div>
                   </div>
@@ -100,14 +100,14 @@
               </div>
 
             </div>
-            
+
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
+--}}
 
 <br>
 <div class="container">
@@ -122,26 +122,26 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="loginModal">
               <div class="col-12">
 
                 <h3>Please Login</h3>
                 <br>
                 <form class="login">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="emailInput" placeholder="Email">
+                    <label for="InputUserName">UserName</label>
+                    <input type="username" class="form-control" id="userNameInput" placeholder="UserName">
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
+                    <label for="InputPassword">Password</label>
                     <input type="password" autocomplet="current-password" class="form-control" id="passwordInput" placeholder="Password">
-                </div>
-                <div class="checkbox">
+                  </div>
+                  <div class="checkbox">
                     <label>
                       <input type="checkbox"> Remember Me
                     </label>
                   </div>
-                  <button type="submit" class="btn btn-primary form-control">Login</button>
+                  <button type="submit" id="loginSubmit" class="btn btn-primary form-control">Login</button>
                 </form>
                 <br>
                 <p>Or sign up
@@ -183,52 +183,59 @@
                 <br>
                 <form class="signup">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
+                    <label for="newUserName">UserName</label>
+                    <input type="username" class="form-control" id="newUserName" placeholder="UserName">
+                  </div>
+                  <div class="form-group">
+                    <label for="newUserEmail">Email address</label>
                     <input type="email" class="form-control" id="newUserEmail" placeholder="Email">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
+                  </div>
+                  <div class="form-group">
+                    <label for="newUserPassword">Password</label>
                     <input type="password" autocomplete="new-password" class="form-control" id="newUserPassword" placeholder="Password">
-                </div>
-                <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+                  </div>
+                  <div class="form-group">
+                    <label for="newUserPasswordConf">Confirm Password</label>
+                    <input type="password" autocomplete="new-password" class="form-control" id="newUserPasswordConf" placeholder="ConfirmPassword">
+                  </div>
+                  <div style="display: none" id="alert" class="alert alert-danger" role="alert">
                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                    <span class="sr-only">Error:</span> <span class="msg"></span>
-                </div>
-                <div class="checkbox">
+                    <span class="sr-only">Error:</span>
+                    <span class="msg"></span>
+                  </div>
+                  <div class="checkbox">
                     <label>
                       <input type="checkbox"> Remember Me
                     </label>
-                </div>
-                <button type="submit" class="btn btn-primary form-control">Sign Up</button>
-                  </form>
-                  <br>
+                  </div>
+                  <button type="submit" id="signUpID" class="btn btn-primary form-control">Sign Up</button>
+                </form>
+                <br>
 
-                </div>
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
-
             </div>
-         <div class="modal-footer">
+            <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <button type="button" class="btn btn-primary">Save changes</button>
             </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
+</div>
 
 <script>
   $('#myModal').on('shown.bs.modal', function () {
     $('#myInput').trigger('focus')
   })
-</script>
-
+</script> {{!--
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/public/js/favorites.js"></script>
 <script src="/public/js/index.js"></script>

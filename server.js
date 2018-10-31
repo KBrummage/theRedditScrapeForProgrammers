@@ -43,7 +43,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Connect to the Mongo DB
-const mongoURI = process.env.MONGO_URI || "mongodb://localhost/scrape";
+const mongoURI = process.env.MONGODB_URI || "mongodb://localhost/scrape";
 
 mongoose.connect(mongoURI, {
     useNewUrlParser: true

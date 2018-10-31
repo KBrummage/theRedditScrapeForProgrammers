@@ -43,11 +43,19 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Connect to the Mongo DB
-const mongoURI = process.env.MONGODB_URI || "mongodb://localhost/scrape";
 
-mongoose.connect(mongoURI, {
-    useNewUrlParser: true
-});
+var databaseUri = "mongodb://localhost/scrape";
+if(process.env.MONGODB_URI){
+    mongoose.connect(process.env.MONGODB_URI, {
+        useNewUrlParser: true
+    });
+} else {
+    mongoose.connect(databaseUri, {
+        useNewUrlParser: true
+    })
+}
+
+
 
 
 //handlebars

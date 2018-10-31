@@ -73,8 +73,9 @@ $(document).ready(function () {
 
     })
 
-    $("#favorites").on("click", function (event) {
+    $("#favorites").on("click", function () {
         var userID = $("#NamePlate").text();
+        console.log(userID + "<--userID")
         $.ajax({
                 method: "GET",
                 url: `/fav/${userID}`,
@@ -85,7 +86,7 @@ $(document).ready(function () {
 
             })
             .then(function (data) {
-                console.log(data);
+                console.log(data)
             })
             .catch(function (err) {
                 $("#alert .msg").text(err.responseJSON);

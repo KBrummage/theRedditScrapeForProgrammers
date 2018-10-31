@@ -201,15 +201,14 @@ app.get("/fav/:userID", function(req, res){
         console.log(cardArray, "<got to .then");
         // console.log(cardArray + "CardArray")
         // console.log(user.cards)
-        var favObject = {
+        var hbsObject = {
             entries: cardArray
         }
-        // console.log(hbsObject + " <__hbsObject");
-        // res.send(favObject);
-        res.render("favorites", favObject)
-        // res.send(cardArray)
-    })
+        console.log(hbsObject + " <__hbsObject");
+        res.status(200).render("index", hbsObject)
+        console.log("went past redner")
 
+    })
 })
 
 app.post("/fav", function (req, res){

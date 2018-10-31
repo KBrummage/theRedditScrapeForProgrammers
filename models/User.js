@@ -20,8 +20,9 @@ var UserSchema = new Schema({
         required: true
     },
     cards: [{
-        type: String,
-        // ref: "ScrapedData"
+        type: Schema.Types.ObjectId,
+        unique: true,
+        ref: "ScrapedData"
     }]
 })
 

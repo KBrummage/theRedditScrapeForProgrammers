@@ -43,7 +43,9 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/scrape", {
+const mongoURI = process.env.MONGO_URI || "mongodb://localhost/scrape";
+
+mongoose.connect(mongoURI, {
     useNewUrlParser: true
 });
 
@@ -74,7 +76,7 @@ app.get("/", function (req, res) {
 
         var $ = cheerio.load(response.data);
 
-        mongoose.connection.db.dropDatabase();
+        // mongoose.connection.db.dropDatabase();
         $("div.top-matter").each(function (i, element) {
             var title = $(this).find("a.title").text();
             var link = $(this).find("a:first-child").attr("href");
@@ -84,7 +86,7 @@ app.get("/", function (req, res) {
             var timeStamp = $(this).find("time").attr("title");
             var time = $(this).find("time").text();
             var sub = $(this).find("a.subreddit").text();
-            console.log(link);
+            // console.log(link);
             var result = {
                 title: title,
                 link: link,
@@ -95,22 +97,24 @@ app.get("/", function (req, res) {
 
             db.ScrapedData.create(result)
                 .then(function (card) {
-                    console.log(card);
+                    // console.log(card);
                 })
                 .catch(function (err) {
-                    console.log(err)
+                    // console.log(err)
                 })
         })
 
     })
     db.ScrapedData.find({}, function (err, data) {
-        console.log(data);
+        // console.log(data);
         if (err) throw err;
         else {
             var hbsObject = {
                 entries: data
             }
+
             console.log(hbsObject + " <__hbsObject");
+            // res.send(hbsObject);
             res.render("index", hbsObject)
         }
     })
@@ -176,14 +180,48 @@ app.post("/verify", function (req, res, next) {
         })
     }
 })
+app.get("/fav/:userID", function(req, res){
+    var userID = req.params.userID;
+    db.User.find({username: userID})
+    .populate('cards')
+    .then(function(user){
+        var cardArray = [];
+        for (var i = 0; i < user[0].cards.length; i++){
+            data = user[0].cards[i];
+            card = {
+                title: data.title,
+                link: data.link,
+                timeStamp: data.timeStamp,
+                time: data.time,
+                sub: data.sub,
+                meta: data.meta
+            }
+            cardArray.push(card)
+        }
+        console.log(cardArray, "<got to .then");
+        // console.log(cardArray + "CardArray")
+        // console.log(user.cards)
+        var favObject = {
+            entries: cardArray
+        }
+        // console.log(hbsObject + " <__hbsObject");
+        // res.send(favObject);
+        res.render("favorites", favObject)
+        // res.send(cardArray)
+    })
 
-app.post("/fav", function (req, resp){
+})
+
+app.post("/fav", function (req, res){
     var userID = req.body.userID;
     var cardID = req.body.cardID;
     console.log(`Made it to server side + "${cardID}", "${userID}"`)
-     db.User.findOneAndUpdate({username: userID}, {$push: {cards: cardID}})
-      
+     db.User.findOneAndUpdate({username: userID}, {$push: {cards: cardID}}, function(){
+         res.json("")
+     }
+     )
     })
+
 
 
 //Listen on port 3030

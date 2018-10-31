@@ -20,8 +20,6 @@ $(document).ready(function () {
                 $("#alert .msg").text(err.responseJSON);
                 $("#aldert").fadeIn(500);
             })
-
-
     })
     var signUpForm = $("form.signup");
     signUpForm.on("submit", function (event) {
@@ -75,6 +73,29 @@ $(document).ready(function () {
 
     })
 
+    $("#favorites").on("click", function (event) {
+        var userID = $("#NamePlate").text();
+        $.ajax({
+                method: "GET",
+                url: `/fav/${userID}`,
+                // data: {
+                //     cardID: cardID,
+                //     userID: userID
+                // }
+
+            })
+            .then(function (data) {
+                console.log(data);
+            })
+            .catch(function (err) {
+                $("#alert .msg").text(err.responseJSON);
+                $("#aldert").fadeIn(500);
+            })
+    })
+
+
+
+
     var logInForm = $("form.login");
     logInForm.on("submit", function (event) {
         event.preventDefault();
@@ -96,7 +117,7 @@ $(document).ready(function () {
                 .then(function (data) {
                     console.log("verifying,,," + data);
                     (this).hide();
-                    
+
                 })
                 .catch(function (err) {
                     $("#alert .msg").text(err.responseJSON);

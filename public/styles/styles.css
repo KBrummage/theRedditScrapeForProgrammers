@@ -6,12 +6,11 @@
       border: 1px red solid;
   }  */
 
-* {
-    font-family: 'Vollkorn SC', serif;
-}
-
 h2 {
     text-align: center;
+    background-color: rgba(251, 254, 249, 1);
+    color: rgba(152, 206, 0, 1);
+ 
 }
 
 .mainContainer {
@@ -23,7 +22,7 @@ h2 {
 }
 
 .chalkboard {
-    background: rgba(246, 246, 246, .2);
+    background: rgba(251, 254, 249, 1);
 
 }
 
@@ -31,8 +30,10 @@ h2 {
     display: flex;
     margin: auto;
     padding: 0 0 2% 0;
-    width: 60%;
+    width: 70%;
     margin-top: 2%;
+    background-color:rgba(251, 254, 249, 1);
+
 
 }
 
@@ -127,6 +128,11 @@ h2 {
 
 }
 
+.fa.fa-heart,
+.fas {
+    color: red;
+
+}
 .far.fa-heart,
 .fas {
     color: red;
@@ -137,3 +143,10 @@ h2 {
 /* font-family: 'Cormorant Unicase', serif;
   font-family: 'Vollkorn SC', serif;
   font-family: 'Alice', serif; */
+
+
+/* $color1: rgba(251, 254, 249, 1);
+$color2: rgba(152, 206, 0, 1);
+$color3: rgba(0, 0, 0, 1);
+$color4: rgba(91, 91, 91, 1);
+$color5: rgba(125, 124, 122, 1);  */

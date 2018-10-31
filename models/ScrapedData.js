@@ -26,6 +26,10 @@ var ScrapedSchema = new mongoose.Schema({
         type: String,
         require: true,
         trim: true
+    },
+    meta:{
+        votes: Number,
+        favs: Number
     }
 })
 

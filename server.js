@@ -22,13 +22,15 @@ var cheerio = require('cheerio')
 
 //initialze express
 var app = express()
-
+var cookieParser = require('cookie-parser');
 var session = require('express-session');
+app.use(cookieParser());
 //use sessions for tracking logins
 app.use(session({
     secret: 'work hard',
     resave: true,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie: { maxAge: 120000 }
 }));
 // Use morgan logger for logging requests
 app.use(logger("dev"));
@@ -54,7 +56,7 @@ app.engine("handlebars",
 )
 app.set("view engine", "handlebars")
 
-
+var loggedUser;
 // db.ScrapedData.create({
 //         name: "Card Data"
 //     }).then(function (card) {
@@ -113,6 +115,14 @@ app.get("/", function (req, res) {
         }
     })
 
+    // var defaultUserName = {
+    //     email: "KBrummage@gmail.com",
+    //     username: "KBrummage",
+    //     password: "on"
+    // }
+    
+    // db.User.create(defaultUserName);
+
 })
 
 
@@ -150,7 +160,9 @@ app.post("/verify", function (req, res, next) {
                 if (err) throw err;
                 else if (isMatch) {
                     req.session.userId = user._id;
-                    console.log("It's a Match!")
+                    req.session.id = user._id;
+                    console.log("It's a Match!");
+                    console.log(req.session.userId)
                 }
                 else if(!isMatch){
                     console.log("Not a match")
@@ -165,6 +177,13 @@ app.post("/verify", function (req, res, next) {
     }
 })
 
+app.post("/fav", function (req, resp){
+    var userID = req.body.userID;
+    var cardID = req.body.cardID;
+    console.log(`Made it to server side + "${cardID}", "${userID}"`)
+     db.User.findOneAndUpdate({username: userID}, {$push: {cards: cardID}})
+      
+    })
 
 
 //Listen on port 3030

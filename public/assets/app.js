@@ -21,6 +21,27 @@ $(document).ready(function () {
                 $("#aldert").fadeIn(500);
             })
     })
+
+    $("form.comments").on("click", function(event){
+        event.preventDefault();
+        var id = $(this).attr("id");
+        var userID = $("#NamePlate").text();
+        var comment = $(`#${id}commentID`).val();
+        console.log(comment + userID);
+        $.ajax({
+            method: "POST",
+            url: `/${id}`,
+            data:{
+                comment: comment,
+                userID: userID
+            }
+        }).then(function(data){
+            console.log("comment sent")
+        }).catch(function(err){
+            console.log(err);
+        })
+        
+    })
     var signUpForm = $("form.signup");
     signUpForm.on("submit", function (event) {
         event.preventDefault();
@@ -37,19 +58,23 @@ $(document).ready(function () {
                     email: email,
                     userPassword: password
                 }
-                $.post("/user", {
+                $.ajax({
+                    method: "POST",
+                    url: "/user",
+                    data: {
                         email: userCapture.email,
                         username: userCapture.userName,
                         password: userCapture.userPassword
-                    })
-                    .then(function (data) {
+                    }
+                })
+                .then(function (data) {
                         console.log("user added");
                         $(this).hide();
                         console.log(data)
                     })
                     .catch(function (err) {
                         $("#alert .msg").text(err.responseJSON);
-                        $("#aldert").fadeIn(500);
+                        $("#alert").fadeIn(500);
                     })
 
             } else { //passwords didn't match

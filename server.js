@@ -79,8 +79,8 @@ var loggedUser;
 
 app.get("/", function (req, res) {
     // db.ScrapedData.find({});
-
-    axios.get('https://old.reddit.com/r/JavaScriptHelp+compsci+computerscience+cscareerquestions+javascript+learnjavascript+node+reactjs/').then(function (response) {
+    console.log("Test82")
+    axios.get('https://old.reddit.com/r/JavaScriptHelp+compsci+computerscience+cscareerquestions+javascript+learnjavascript+node+reactjs/').then(function(response) {
 
         var $ = cheerio.load(response.data);
 
@@ -160,6 +160,8 @@ app.post("/user", function (req, res) {
         })
     }
 })
+
+// If YOU call a function, YOU are 'THIS'.
 
 app.post("/verify", function (req, res, next) {
     console.log(req.body);

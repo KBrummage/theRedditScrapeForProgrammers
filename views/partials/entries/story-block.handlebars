@@ -1,14 +1,26 @@
 <div class="card" id="{{_id}}">
       <div class="card-header">
-            <div>{{sub}}</div>  <div>{{time}}</div>
+            <div>{{sub}}</div>
+            <div>{{time}}</div>
       </div>
       <div class="card-body">
-            
-            <a href='{{link}}' id="{{_id}}"><h4 class="card-title">{{title}}</h4></a>
-            <h5 class = "sub">{{sub}}</h5>
+
+            <a href='{{link}}' id="{{_id}}">
+                  <h4 class="card-title">{{title}}</h4>
+            </a>
+            <h5 class="sub">{{sub}}</h5>
             <span>
                   <i class="far fa-heart" id="{{_id}}"></i>
             </span>
+
+
+            <form class="comments input-group mb-3" id={{_id}}>
+                  <input type="text" class="form-control" placeholder="comments" aria-label="comments" aria-describedby="button-addon2"
+                  id="{{_id}}commentID">
+                  <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="submit" id="{{_id}}Button">Save</button>
+                  </div>
+            </form>
       </div>
 
 </div>

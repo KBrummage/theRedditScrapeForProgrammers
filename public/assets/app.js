@@ -5,7 +5,7 @@ $(document).ready(function () {
         var userID = $("#NamePlate").text();
         console.log(cardID, userID)
         $.ajax({
-                method: "POST",
+                method: "PUT",
                 url: "/fav",
                 data: {
                     cardID: cardID,
